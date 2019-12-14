@@ -214,7 +214,16 @@ namespace TurbulenceLibrary
                 AssignShaderStrings3D();
             }
 
+
+            var prefLocation = "TurbulenceLibLastSavedFolder";
+            string directory = PlayerPrefs.GetString(prefLocation, Application.dataPath);
+            shaderLocation = EditorUtility.SaveFilePanel("Save shader", directory, shaderName, "shader");
+            if (string.IsNullOrEmpty(shaderLocation)) return;
+            PlayerPrefs.SetString(prefLocation, System.IO.Path.GetDirectoryName(shaderLocation));
+
+            //building the shader
             string source = tempShader;
+			shaderName = System.IO.Path.GetFileNameWithoutExtension(shaderLocation);
             source = source.Replace("${Comments}", shaderComments);
             source = source.Replace("${Name}", shaderName);
             source = source.Replace("${Properties}", shaderProperties);
@@ -229,10 +238,6 @@ namespace TurbulenceLibrary
             source = source.Replace("${Normalize}", shaderNormalize);
             source = source.Replace("${ColoringTexturing}", shaderColoringTexturing);
             source = source.Replace("${Alpha}", shaderAlpha);
-            var prefLocation = "TurbulenceLibLastSavedFolder";
-            string directory = PlayerPrefs.GetString(prefLocation, Application.dataPath);
-            shaderLocation = EditorUtility.SaveFilePanel("Save shader", directory, shaderName, "shader");
-            PlayerPrefs.SetString(prefLocation, System.IO.Path.GetDirectoryName(shaderLocation));
             File.WriteAllText(shaderLocation, source);
             AssetDatabase.Refresh();
 
