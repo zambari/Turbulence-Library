@@ -39,7 +39,9 @@
     public const string AlphaOn = 						"\t\t\to.Alpha = h * _Transparency;";
     public const string AlphaOff = 						"\t\t\to.Alpha = 1.0;";
 
-    public const string PropertiesNormal = 				"\t\t_Octaves (\"Octaves\", Float) = 8.0\n" +
+    public const string PropertiesNormal = 				"\t\t[HideInInspector] _MainTex (\"Texture\", 2D) = \"gray\" {}\n" + 
+                                                        // the texture is not used by the shader (does not refer a sampler2d), added to allow use on UI Image
+                                                        "\t\t_Octaves (\"Octaves\", Float) = 8.0\n" +
                                                         "\t\t_Frequency (\"Frequency\", Float) = 1.0\n" +
                                                         "\t\t_Amplitude (\"Amplitude\", Float) = 1.0\n" +
                                                         "\t\t_Lacunarity (\"Lacunarity\", Float) = 1.92\n" +
