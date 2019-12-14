@@ -104,8 +104,16 @@ public class NoiseCreator : EditorWindow
 
     void OnEnable()
     {
-        tempShaderLocation = Application.dataPath + "/Turbulence-Library/Resources/shader.template";
-        tempShader = File.ReadAllText(tempShaderLocation);
+        var assets = AssetDatabase.FindAssets("shader_template");
+        if (assets.Length > 0)
+        {
+            string templatePath = AssetDatabase.GUIDToAssetPath(assets[0]);
+            tempShader = AssetDatabase.LoadAssetAtPath<TextAsset>(templatePath).ToString();
+        }
+        else 
+        {
+            Debug.Log("shader_template.bytes not found");
+        }
     }
 
     void OnGUI()
