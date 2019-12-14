@@ -1,19 +1,31 @@
-Turbulence Library by Jérémie St-Amand
 
---- Summary ---
+### Fork info
+
+TurbulenceLibrary is solid piece of work, which didn't run at first, throwing an exception on startup. You needed to place it under "Assets/Turbulence-Library and nowhere else, because of hardcoded path to the template shader.
+
+I added a couple of lines to replece hardcoded reference with an AssetLibrary reference, which I see as a minor but valid improvement (you can now place it under Plugins or wherever)
+
+Initially this was going to be a pull request, but original repo is now archived, and none of the seven forks are active (bryanrtboy fork had a few comitts but if you check he only changed formatting and added some random outputs).
+
+original info below:
+
+-------
+Turbulence Library by Jeremie St-Amand
+
+## Summary 
 
 Turbulence Library is a vast collection of procedural noise shaders for Unity. The noise algorithms were made by https://github.com/BrianSharpe and some of the fbms were made by http://www.decarpentier.nl/
 
 Check out their works!
 
---- Getting Started ---
+## Getting Started
 
 1. Open "Window/Noise Creator"
 2. Select the desired properties
 3. Press "Create Shader"
 4. Select location to save shader
 
---- Properties ---
+## Properties 
 
 - Dimension:	Number of dimensions for the noise sampling.
 - Noise Type:	Major noise type.
@@ -25,7 +37,6 @@ Check out their works!
 - Colored:		Allows you to color the lower and higher values of the output.
 - Textured:		Allows you to apply textures to the lower and higher values of the output.
 
---- Misc ---
-
+## Misc
 - In 2D and animated 3D noises, the texture coordinates are used to sample the noise. In non-animated 3D noises, the vertex positions are used.
 - Displacement on sharp edges mat cause holes in the mesh. Always use displacement with smooth surfaces.
