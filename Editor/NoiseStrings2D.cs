@@ -2,6 +2,15 @@
 {
     public static class NoiseStrings2D
     {
+        public const string shaderComments = "//\n" +
+                           "//	Generated via Turbulence-Library by Jeremie St-Amand @jesta88 \n" +
+                           "// with mods from @zambari \n" +
+                           "// \n" +
+                           "//	GPU noise code based on amazing work by:\n" +
+                           "//	http://briansharpe.wordpress.com\n" +
+                           "//	https://github.com/BrianSharpe\n" +
+                           "//\n";
+
         public const string NormalizeOn = "\t\t\th = h * 0.5 + 0.5;";
 
         public const string TagsTransparent = "\t\tTags {\"Queue\"=\"Transparent\"}";
@@ -36,13 +45,14 @@
 
         public const string AlphaOn = "\t\t\to.Alpha = h * _Transparency;";
         public const string AlphaOff = "\t\t\to.Alpha = 1.0;";
-
-        public const string PropertiesNormal = "\t\t_Octaves (\"Octaves\", Float) = 8.0\n" +
-                                                            "\t\t_Frequency (\"Frequency\", Float) = 1.0\n" +
-                                                            "\t\t_Amplitude (\"Amplitude\", Float) = 1.0\n" +
-                                                            "\t\t_Lacunarity (\"Lacunarity\", Float) = 1.92\n" +
-                                                            "\t\t_Persistence (\"Persistence\", Float) = 0.8\n" +
-                                                            "\t\t_Offset (\"Offset\", Vector) = (0.0, 0.0, 0.0, 0.0)\n";
+        public const string PropertiesNormal = "\t\t[HideInInspector] _MainTex (\"Texture\", 2D) = \"gray\" {}\n" +
+                                                                  // the texture is not used by the shader (does not refer a sampler2d), added to allow use on UI Image
+                                                               "\t\t_Octaves (\"Octaves\", Float) = 8.0\n" +
+                                                                 "\t\t_Frequency (\"Frequency\", Float) = 1.0\n" +
+                                                                 "\t\t_Amplitude (\"Amplitude\", Float) = 1.0\n" +
+                                                                 "\t\t_Lacunarity (\"Lacunarity\", Float) = 1.92\n" +
+                                                                 "\t\t_Persistence (\"Persistence\", Float) = 0.8\n" +
+                                                                 "\t\t_Offset (\"Offset\", Vector) = (0.0, 0.0, 0.0, 0.0)\n";
         public const string PropertiesRidged = "\t\t_RidgeOffset (\"Ridge Offset\", Float) = 1.0\n";
         public const string PropertiesDerivedSwiss = "\t\t_RidgeOffset (\"Ridge Offset\", Float) = 1.0\n" +
                                                             "\t\t_Warp (\"Warp\", Float) = 0.25\n";
